@@ -43,7 +43,7 @@ namespace PL.Controllers
         {
             if (IdBanco != 1)
             {
-                ML.Result = new BL.Banco.Add();
+               //ML.Result = new BL.Banco.Add();
 
             }
             return View("Modal");
