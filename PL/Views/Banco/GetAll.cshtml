@@ -1,0 +1,67 @@
+﻿@model ML.Banco
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <hr />
+
+    <div class="row">
+        @if (Model.Bancos != null)
+        {
+            <table class="table-responsive table table-success table-striped">
+                <thead>
+                    <tr>
+                        <td class="text-center" style=" font-weight:bold;"></td>
+
+                        <td style="display:none">IdBanco</td>
+                        <td class="text-center" style=" font-weight:bold">Nombre</td>
+                        <td class="text-center" style=" font-weight:bold;">NoEmpleados</td>
+                        <td class="text-center" style=" font-weight:bold;">NoSucursales</td>
+                        <td class="text-center" style=" font-weight:bold;">Pais</td>
+                        <td class="text-center" style=" font-weight:bold;">Capital</td>
+                        <td class="text-center" style=" font-weight:bold;">RazonSocial</td>
+                        <td class="text-center" style=" font-weight:bold;">NoClientes</td>
+
+
+                        <td class="text-center" style=" font-weight:bold;"></td>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (ML.Banco banco in Model.Bancos)
+                    {
+                        <tr>
+                            
+                            <td class="text-center"><a class="btn btn-warning" href="@Url.Action("form", "Banco", new { IdBanco = banco.IdBanco })"></a></td>
+
+                            <td style="display:none">@banco.IdBanco</td>
+                            <td>@banco.Nombre</td>
+                            <td>@banco.NoEmpleados</td>
+                            <td>@banco.NoSucursales</td>
+
+                            <td style="display:none">@banco.Pais.IdPais</td>
+                            <td>@banco.Pais.Nombre</td>
+
+                            <td>@banco.Capital</td>
+
+                            <td style="display:none">@banco.RazonSocial.IdRazonSocial</td>
+                            <td>@banco.RazonSocial.Nombre</td>
+
+                            <td>@banco.NoClientes</td>
+
+                            <td class="text-center"><a class="btn btn-danger" href="@Url.Action("Delete", "Banco", new { IdBanco = banco.IdBanco })"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert"> 
+                Error 
+            </div>
+        }
+    </div>
+</div>
